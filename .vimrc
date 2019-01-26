@@ -1,22 +1,12 @@
+syntax on
 set number          " show line number
 set cursorline      " highlight cursor line
 set tabstop=4 expandtab shiftwidth=4 smarttab
 set autoindent cindent
-syntax on
 colo desert         " colourscheme.
 set nowrap
 autocmd GUIEnter * simalt ~x " start fullscreen in windows.
-" map <C-C> "+y       " simulates Ctrl-C
-" map <C-V> "+p       " simulates Ctrl-V
 set clipboard=unnamed         " use Windows Clipboard for 'yanking' (simpler data exchange with windows clipboard
-
-" TEST BEGIN 
-" Plug 'https://github.com/kana/vim-textobj-function' 
-" set runtimepath^=~/Vim/plugged/vim-textobj-user/autoload/textobj/user.vim
-
-" Plug 'https://github.com/kana/vim-textobj-user'
-" set runtimepath^=~/Vim/plugged/vim-textobj-function/plugin/textobj/function.vim
-" TEST END
 
 " -- Plugin-Manager: 'Vim-Plug' manager setup --
 if has('win32') || has('win64')
@@ -57,8 +47,22 @@ nmap <C-Right> <C-W>><C-W>>10
 nmap <C-Up>    <C-W>-<C-W>-10
 nmap <C-Down>  <C-W>+<C-W>+10
 
+augroup CursorLineOnlyInActiveWindow " Cursorline in Active Window
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END  
+
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
 nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+
+" ===================
+"     HELP
+" ===================
+" change $HOME: specify env. variable in windows
+" HOME Z:\Admin\Vim
+" Remote access to Synology
+" scp://admin@192.168.178.20//var/services/homes/admin/.viminfo
