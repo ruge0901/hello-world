@@ -59,7 +59,6 @@ Plug 'https://github.com/sgur/vim-textobj-parameter'    "  i, a, - function para
 Plug 'https://github.com/vim-scripts/argtextobj.vim'    "  ia aa - function argument
 " 2. Others plugins:
 Plug 'https://github.com/itchyny/lightline.vim'         " status bar
-Plug 'https://github.com/arcticicestudio/nord-vim'
 Plug 'https://github.com/machakann/vim-highlightedyank' " highlight yanked text
 Plug 'https://github.com/tpope/vim-surround'            " surround text 
 Plug 'https://github.com/tpope/vim-unimpaired'          " e.g for grep next/prev ]q [q 
