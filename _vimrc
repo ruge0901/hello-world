@@ -1,3 +1,6 @@
+" ====================================
+" :h quickref
+" ====================================
 set guifont=Consolas:h11
 set number          " show line number
 set cursorline      " highlight cursor line
@@ -45,8 +48,8 @@ augroup END
 " set grepprg=grep\ " --nogroup\ --nocolor
 " cd D:\PROJECTS\External\MQB19\MQB19SVN\SW\mc_sw\appl
 
-" --------- ###  Plugin BEGIN --------------------------------
-" ###  Plugin-Manager 'Vim-Plug' (':PlugInstall')
+" --------- ###Â Â Plugin BEGIN --------------------------------
+" ###Â Â Plugin-Manager 'Vim-Plug' (':PlugInstall')
 if has('win32') || has('win64')
 let &shell='cmd.exe'
 endif
@@ -66,7 +69,7 @@ Plug 'https://github.com/tpope/vim-repeat'              " repeat e.g. 'surround'
 Plug '~/fzf'                                            " Fuzzy find... NOT working yet !!
 Plug 'https://github.com/tpope/fzf.vim'                
 Plug 'https://github.com/craigemery/vim-autotag'        " NOT working yet
-Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
+Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
 "
 " Initialize plugin system
 call plug#end()
@@ -74,6 +77,7 @@ call plug#end()
 " -- Setup Plugin: 'lightline'
 set laststatus=2 " auto-start plugin
 set noshowmode   " plugin lightline: disable vim-default status at bottom --- INSERT ---  
+" See :h g:lightline.colorscheme for the complete list.
 let g:lightline = {
       \ 'colorscheme': 'Tomorrow',
       \ }
@@ -89,7 +93,7 @@ let g:highlightedyank_highlight_duration = 200      " highlight time in 'ms'
 " List "repeatable" plugins (vor vim-repeat plugin)
 silent! call repeat#set("\<Plug>vim-surround", v:count)
 silent! call repeat#set("\<Plug>vim-unimpaired", v:count)
-" --------- ###  Plugin END --------------------------------
+" --------- ###Â Â Plugin END --------------------------------
 
 " ### Windows
 nnoremap <C-h> <C-w>h           " Window Navigation
@@ -141,7 +145,12 @@ noremap <Right> <Nop>
 " ctags: search for tags file in pwd
 set tags=./tags,tags;
 "    (see:   http://rc3.org/2013/01/05/vim-and-ctags/ )
-"   Create tags for 'C' in pwd: ctags --languages=C -R .
+"
+" C++ functions navigation: If your '{' or '}' are not in the first column " .see vimrc help ":h [["
+:map [[ ?{<CR>w99[{
+:map ][ /}<CR>b99]}
+:map ]] j0[[%/{<CR>
+:map [] k$][%?}<CR>
 
 " ====================================
 "           HELP
@@ -174,3 +183,12 @@ set tags=./tags,tags;
 " 1. :tabnew
 " 2. :grep
 " 3. :cn, :cp or :cN to navigate
+" ====================================
+" TAGS
+" Create tags for 'C' in pwd: 
+"   ctags --languages=C -R .
+"  close IDEAS on error: "ctags: Failure on attempt to read file : Permission denied" 
+" ====================================
+" MISC:
+" :h quickref
+" ====================================
